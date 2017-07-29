@@ -289,8 +289,11 @@ def generate_tex_file(expression, template_tex_file):
     return result
 
 def tex_to_dvi(tex_file):
-    result = tex_file.replace(".tex", ".xdv")
-    if not os.path.exists(result):
+    dvi_result = tex_file.replace(".tex", ".dvi")
+    xdv_result = tex_file.replace(".tex",".xdv")
+    have_dvi=os.path.exists(dvi_result)
+    have_xdv=os.path.exists(xdv_result)
+    if not(have_dvi or have_xdv):
         commands = [
             "xelatex",
             "-no-pdf "
@@ -309,7 +312,8 @@ def tex_to_dvi(tex_file):
             raise Exception(
                 "Latex error converting to dvi. "
                 "See log output above or the log file: %s" % log_file)
-    return result
+    have_dvi = os.path.exists(dvi_result)
+    return dvi_result if have_dvi else xdv_result
 
 def dvi_to_svg(dvi_file, regen_if_exists = False):
     """
