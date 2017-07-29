@@ -153,7 +153,7 @@ def get_scene_classes(scene_names_to_classes, config):
 
 def get_module(file_name):
    module_name = file_name.replace(".py", "")
-   last_module = imp.load_module(".", *imp.find_module("."))
+   last_module = imp.load_module("manim", *imp.find_module("manim"))
    for part in module_name.split(os.sep):
       load_args = imp.find_module(part, last_module.__path__)
       last_module = imp.load_module(part, *load_args)

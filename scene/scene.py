@@ -425,7 +425,7 @@ class Scene(object):
             '-loglevel', 'error',
             temp_file_path,
         ]
-        self.writing_process = sp.Popen(command, stdin=sp.PIPE)
+        self.writing_process = sp.Popen(command, stdin=sp.PIPE,shell=True)
 
     def close_movie_pipe(self):
         self.writing_process.stdin.close()

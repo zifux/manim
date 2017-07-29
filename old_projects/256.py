@@ -1,3 +1,4 @@
+#coding=utf-8
 from helpers import *
 
 from mobject.tex_mobject import TexMobject
@@ -60,8 +61,8 @@ class BreakUp2To256(PiCreatureScene):
         self.initialize_bits()
         self.add_number()
         self.break_up_as_powers_of_two()
-        self.break_up_as_four_billions()
-        self.reorganize_four_billions()
+        #self.break_up_as_four_billions()
+        #self.reorganize_four_billions()
 
     def initialize_bits(self):
         bits = bit_string_to_mobject("")
@@ -84,7 +85,7 @@ class BreakUp2To256(PiCreatureScene):
         number.highlight(YELLOW)
         expression.next_to(brace, RIGHT)
 
-        words = TextMobject("Seems big...I guess...")
+        words = TextMobject("看起来挺大...感觉...")
         words.next_to(self.pi_creature.get_corner(UP+LEFT), UP)
 
         self.play(
@@ -118,7 +119,7 @@ class BreakUp2To256(PiCreatureScene):
         for i, subgroup in enumerate(subgroups):
             subgroup.shift(i*MED_LARGE_BUFF*DOWN)
             subexpression = TextMobject(
-                "$2^{32}$", "possibilities"
+                "$2^{32}$", "可能性"
             )
             subexpression[0].highlight(GREEN)
             subexpression.next_to(subgroup, RIGHT)
@@ -193,7 +194,7 @@ class BreakUp2To256(PiCreatureScene):
         self.play(Animation(self.bits, run_time = time))
 
     def update_frame(self, *args, **kwargs):
-        self.number += 1
+        self.number += 100
         new_bit_string = bin(self.number)[2:]
         for i, bit in enumerate(reversed(new_bit_string)):
             index = -i-1

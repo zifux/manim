@@ -50,3 +50,8 @@ class WriteStuff(Scene):
         self.play(Write(TextMobject("Stuff").scale(3)))
 
 
+class PiCreatureS(Scene):
+    def construct(self):
+        morty = PiCreatureScene().create_pi_creature()
+        m2 = PiCreatureScene().create_pi_creature()
+        self.play(ShowCreation(morty))

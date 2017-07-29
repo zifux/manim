@@ -289,15 +289,15 @@ def generate_tex_file(expression, template_tex_file):
     return result
 
 def tex_to_dvi(tex_file):
-    result = tex_file.replace(".tex", ".dvi")
+    result = tex_file.replace(".tex", ".xdv")
     if not os.path.exists(result):
         commands = [
-            "latex", 
+            "xelatex",
+            "-no-pdf "
             "-interaction=batchmode", 
             "-halt-on-error",
             "-output-directory=" + TEX_DIR,
             tex_file,
-            "> /dev/null"
         ]
         exit_code = os.system(" ".join(commands))
         if exit_code != 0:
@@ -318,7 +318,7 @@ def dvi_to_svg(dvi_file, regen_if_exists = False):
     Returns a list of PIL Image objects for these images sorted as they
     where in the dvi
     """
-    result = dvi_file.replace(".dvi", ".svg")
+    result = dvi_file.replace(".dvi", ".svg").replace(".xdv",".svg")
     if not os.path.exists(result):
         commands = [
             "dvisvgm",
@@ -328,7 +328,6 @@ def dvi_to_svg(dvi_file, regen_if_exists = False):
             "0",
             "-o",
             result,
-            "> /dev/null"
         ]
         os.system(" ".join(commands))
     return result

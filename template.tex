@@ -1,17 +1,21 @@
-\documentclass[preview]{standalone}
-
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
+\documentclass[12pt]{article}  
+\usepackage{fontspec, xunicode, xltxtra}  
+\usepackage{xeCJK} % 使用xeCJK宏包
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{dsfont}
 \usepackage{setspace}
-\usepackage{tipa}
+%\usepackage{tipa}
 \usepackage{relsize}
+\usepackage{textcomp}
 \usepackage{mathrsfs}
 \usepackage{calligra}
 \usepackage{wasysym}
-
+\thispagestyle{empty}
+\renewcommand \useTIPAfont {\tipacm}
+\setCJKmainfont{LiSu}   % 设置缺省中文字体
+\setmainfont{Times New Roman} % 不指定，使用Tex的默认英文字体
+%\setmainfont{YouYuan}
 \begin{document}
 \centering
 
