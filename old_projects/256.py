@@ -61,8 +61,8 @@ class BreakUp2To256(PiCreatureScene):
         self.initialize_bits()
         self.add_number()
         self.break_up_as_powers_of_two()
-        #self.break_up_as_four_billions()
-        #self.reorganize_four_billions()
+        self.break_up_as_four_billions()
+        self.reorganize_four_billions()
 
     def initialize_bits(self):
         bits = bit_string_to_mobject("")
@@ -80,7 +80,7 @@ class BreakUp2To256(PiCreatureScene):
         brace = Brace(self.bits, RIGHT)
 
         number, possibilities = expression = TextMobject(
-            "$2^{256}$", "possibilities"
+            "$2^{256}$", "种可能性"
         )
         number.highlight(YELLOW)
         expression.next_to(brace, RIGHT)
@@ -119,7 +119,7 @@ class BreakUp2To256(PiCreatureScene):
         for i, subgroup in enumerate(subgroups):
             subgroup.shift(i*MED_LARGE_BUFF*DOWN)
             subexpression = TextMobject(
-                "$2^{32}$", "可能性"
+                "$2^{32}$", "种可能性"
             )
             subexpression[0].highlight(GREEN)
             subexpression.next_to(subgroup, RIGHT)
@@ -143,7 +143,7 @@ class BreakUp2To256(PiCreatureScene):
         new_subexpressions = VGroup()
         for subexpression in self.subexpressions:
             new_subexpression = TextMobject(
-                "4 Billion", "possibilities"
+                "40亿", "种可能性"
             )
             new_subexpression[0].highlight(YELLOW)
             new_subexpression.move_to(subexpression, LEFT)
@@ -234,7 +234,7 @@ class MainBreakdown(Scene):
         four_billions = VGroup()
         for x in range(8):
             mob = TextMobject(
-                "$\\big($", "4 Billion", "$\\big)$",
+                "$\\big($", "40亿", "$\\big)$",
                 arg_separator = ""
             )
             top_line.add(mob)
